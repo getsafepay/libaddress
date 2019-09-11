@@ -18,7 +18,7 @@ type country struct {
 	RequiredFields map[Field]struct{}
 	Upper          map[Field]struct{}
 
-	AdministrativeAreas map[string][]administrativeArea
+	AdministrativeAreas map[string]administrativeAreaSlice
 }
 
 type postCodeRegex struct {
@@ -30,13 +30,13 @@ type administrativeArea struct {
 	ID         string
 	Name       string
 	PostalKey  string
-	Localities []locality
+	Localities localitySlice
 }
 
 type locality struct {
 	ID                  string
 	Name                string
-	DependentLocalities []dependentLocality
+	DependentLocalities dependentLocalitySlice
 }
 
 type dependentLocality struct {
@@ -46,4 +46,5 @@ type dependentLocality struct {
 
 type data map[string]country
 type administrativeAreaSlice []administrativeArea
+type localitySlice []locality
 type dependentLocalitySlice []dependentLocality

@@ -126,8 +126,9 @@ func processAdministrativeAreas(ec externalCountry, lang string) (
 			esd, e := decodeSubdivision(data.Body)
 			if e != nil {
 				err := fmt.Errorf(
-					"error decoding subdivision",
-					e.Error(),
+					"error decoding subdivision" +
+						"for %s/%s: %s",
+					ec.Key, subKeys[i], e.Error(),
 				)
 
 				return administrativeAreaMap, postCodeRegexMap, err
