@@ -4,6 +4,8 @@
 // generated from Google's Address Data Service
 package libaddress
 
+import "fmt"
+
 type formatData struct {
 	Country                     string
 	CountryEn                   string
@@ -40,4 +42,22 @@ func New(fields ...func(*Address)) Address {
 		f(&address)
 	}
 	return address
+}
+
+// NewValid creates a new Address. If the address is invalid, an error
+// is returned. In the case where an error is returned, the error is a
+// hashicorp/go-multierror (https://github.com/hashicorp/go-multierror).
+// You can use a type switch to get a list of validation errors for
+// the address.
+func NewValid(fields ...func(*Address)) (Address, error) {
+
+	address := New(fields...)
+
+	err := Validate(address)
+
+	if err != nil {
+		return address, fmt.Errorf("invalid address: %s", err)
+	}
+
+	return address, nil
 }

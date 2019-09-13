@@ -14,3 +14,7 @@ vet:
 .PHONY: vet-gen
 vet-gen:
 	$(CMD_GO) vet generator/main.go
+
+.PHONY: generate
+generate:
+	$(CMD_GO) generate

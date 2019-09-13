@@ -22,6 +22,8 @@ func getAllowedFields(format string) map[libaddress.Field]struct{} {
 			allowed[libaddress.DependentLocality] = struct{}{}
 		case "%C":
 			allowed[libaddress.Locality] = struct{}{}
+		case "%S":
+			allowed[libaddress.AdministrativeArea] = struct{}{}
 		case "%Z":
 			allowed[libaddress.PostCode] = struct{}{}
 		case "%X":

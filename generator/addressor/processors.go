@@ -108,7 +108,7 @@ func processAdministrativeAreas(ec externalCountry, lang string) (
 
 		if ec.SubMores != "" && subMores[i] == "true" {
 			sanitized := REMOVE_LANG_REGEX.ReplaceAllString(ec.ID, "")
-			url := fmt.Sprintf("%s/%s", GOOGLE_ADDRESS_URL, sanitized)
+			url := fmt.Sprintf("%s/%s/%s", GOOGLE_ADDRESS_URL, sanitized, subKeys[i])
 			if lang != "" {
 				url += fmt.Sprintf("--%s", lang)
 			}
@@ -126,7 +126,7 @@ func processAdministrativeAreas(ec externalCountry, lang string) (
 			esd, e := decodeSubdivision(data.Body)
 			if e != nil {
 				err := fmt.Errorf(
-					"error decoding subdivision" +
+					"error decoding subdivision"+
 						"for %s/%s: %s",
 					ec.Key, subKeys[i], e.Error(),
 				)
@@ -274,7 +274,7 @@ func processLocalities(esd externalSubdivision, lang string) (
 
 		if esd.SubMores != "" && subMores[i] == "true" {
 			sanitized := REMOVE_LANG_REGEX.ReplaceAllString(esd.ID, "")
-			url := fmt.Sprintf("%s/%s", GOOGLE_ADDRESS_URL, sanitized)
+			url := fmt.Sprintf("%s/%s/%s", GOOGLE_ADDRESS_URL, sanitized, subKeys[i])
 			if lang != "" {
 				url += fmt.Sprintf("--%s", lang)
 			}
