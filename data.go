@@ -59,25 +59,25 @@ type PostCodeRegexData struct {
 // are also sorted according to the sort order of the languages
 // they are in.
 type CountryData struct {
-	Format                     string
-	LatinizedFormat            string
-	Required                   []Field
-	Allowed                    []Field
-	DefaultLanguage            string
-	AdministrativeAreaNameType FieldName
-	LocalityNameType           FieldName
-	DependentLocalityNameType  FieldName
-	PostCodeNameType           FieldName
-	PostCodeRegex              PostCodeRegexData
-	AdministrativeAreas        map[string]AdministrativeAreaSlice
+	Format                     string                             `json:"format"`
+	LatinizedFormat            string                             `json:"latinized_format"`
+	Required                   []Field                            `json:"required"`
+	Allowed                    []Field                            `json:"allowed"`
+	DefaultLanguage            string                             `json:"default_language"`
+	AdministrativeAreaNameType FieldName                          `json:"administrative_area_name_type"`
+	LocalityNameType           FieldName                          `json:"locality_name_type"`
+	DependentLocalityNameType  FieldName                          `json:"dependent_locality_name_type"`
+	PostCodeNameType           FieldName                          `json:"post_code_name_type"`
+	PostCodeRegex              PostCodeRegexData                  `json:"post_code_regex"`
+	AdministrativeAreas        map[string]AdministrativeAreaSlice `json:"administrative_areas"`
 }
 
 // CountryListItem represents a single country
 // containing the ISO 3166-1 code and the name
 // of the country.
 type CountryListItem struct {
-	Code string
-	Name string
+	Code string `json:"code"`
+	Name string `json:"name"`
 }
 
 // CountryList contains a list of countries that can be used

@@ -6,20 +6,6 @@ package libaddress
 
 import "fmt"
 
-type formatData struct {
-	Country                     string
-	CountryEn                   string
-	Name                        string
-	Organization                string
-	StreetAddress               []string
-	DependentLocality           string
-	Locality                    string
-	AdministrativeArea          string
-	AdministrativeAreaPostalKey string
-	PostCode                    string
-	SortingCode                 string
-}
-
 // Address represents a valid address made up of its
 // child components
 type Address struct {
