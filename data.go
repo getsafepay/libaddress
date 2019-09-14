@@ -143,6 +143,13 @@ func GetCountry(cc string) CountryData {
 	return internalToExternalCountry(country)
 }
 
+// Get external country returns readadble address information
+// for a given country.
+func GetExternalCountry(cc string) ExternalCountry {
+	country := generated.getCountry(cc)
+	return Externalize(country)
+}
+
 func internalToExternalCountry(c country) CountryData {
 	data := CountryData{
 		Format:                     c.Format,
