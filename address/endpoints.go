@@ -37,7 +37,7 @@ func (a *address) Validate(ctx context.Context, req *ValidateRequest) (interface
     return nil, err
   }
 
-  result, ok := res.(*ValidateResponse)
+  result, ok := res.(ValidateResponse)
   if !ok {
     level.Error(a.logger).Log("message", "unexpected response from address service", "res", fmt.Sprintf("%v", result))
     return nil, errors.New("unexpected response from address")

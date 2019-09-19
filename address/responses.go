@@ -8,6 +8,6 @@ type ValidateResponse struct {
   Status common.Status `json:"status"`
 }
 
-func (vr *ValidateResponse) DoesError() []string {
+func (vr ValidateResponse) DoesError() []string {
   return vr.Status.Errors
 }
