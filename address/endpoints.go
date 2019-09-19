@@ -8,6 +8,7 @@ import (
   "strings"
   "github.com/go-kit/kit/log"
   "github.com/go-kit/kit/log/level"
+  "fmt"
 )
 
 type Addressor interface {
@@ -38,7 +39,7 @@ func (a *address) Validate(ctx context.Context, req *ValidateRequest) (interface
 
   result, ok := res.(*ValidateResponse)
   if !ok {
-    level.Error(a.logger).Log("message", "unexpected response from address service")
+    level.Error(a.logger).Log("message", "unexpected response from address service", "res", fmt.Sprintf("%v", result))
     return nil, errors.New("unexpected response from address")
   }
 
