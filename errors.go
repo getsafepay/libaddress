@@ -9,31 +9,31 @@ import (
 var (
 	// ErrInvalidCountryCode indicates that the country code
 	// used to create an address is invalid
-	ErrInvalidCountryCode = errors.New("invalid country code")
+	ErrInvalidCountryCode = errors.New("invalid:Country")
 
 	// ErrInvalidDependentLocality indicates that the dependent
 	// locality is invalid. This is usually due to the country
 	// having a pre-determined list of dependent localities and
 	// the value does not match any of the keys in the list of
 	// dependent localities.
-	ErrInvalidDependentLocality = errors.New("invalid dependent locality")
+	ErrInvalidDependentLocality = errors.New("invalid:DependentLocality")
 
 	// ErrInvalidLocality indicates that the locality is invalid.
 	// This is usually due to the country having a pre-determined
 	// list of localities and the value does not match any of the
 	// keys in the list of localities
-	ErrInvalidLocality = errors.New("invalid locality")
+	ErrInvalidLocality = errors.New("invalid:Locality")
 
 	// ErrInvalidAdministrativeArea indicates that the administrative
 	// area is invalid. This is usually due to the country having a
 	// pre-determined list of administrative areas and the value
 	// does not match any of the keys in the list of administrative
 	// areas.
-	ErrInvalidAdministrativeArea = errors.New("invalid administrative area")
+	ErrInvalidAdministrativeArea = errors.New("invalid:AdministrativeArea")
 
 	// ErrInvalidPostCode indicates that the post code did not validate
 	// using the regular expression of the country
-	ErrInvalidPostCode = errors.New("invalid post code")
+	ErrInvalidPostCode = errors.New("invalid:PostCode")
 )
 
 // ErrMissingRequiredFields indicates that a required address
@@ -51,8 +51,8 @@ func (e ErrMissingRequiredFields) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"missing required fields for %s: %s",
-		e.country, strings.Join(fieldStr, ","),
+		"missing required fields:%s",
+		strings.Join(fieldStr, ","),
 	)
 }
 
@@ -71,7 +71,7 @@ func (e ErrUnsupportedFields) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"unsupported fields for %s: %s",
-		e.country, strings.Join(fieldStr, ","),
+		"unsupported fields for:%s",
+		strings.Join(fieldStr, ","),
 	)
 }
