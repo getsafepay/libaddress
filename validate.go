@@ -21,7 +21,7 @@ func ListFormatFunc(es []error) string {
 // `address.NewValid()` function can do it
 // in one call.
 func Validate(address Address) error {
-	var result *multierror.Error
+	result := new(multierror.Error)
 	result.ErrorFormat = ListFormatFunc
 
 	if !generated.hasCountry(address.Country) {
