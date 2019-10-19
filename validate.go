@@ -4,7 +4,17 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"regexp"
 	"strings"
+	"fmt"
 )
+
+func ListFormatFunc(es []error) string {
+	points := make([]string, len(es))
+	for i, err := range es {
+		points[i] = fmt.Sprintf("%s", err)
+	}
+
+	return strings.Join(points, ",")
+}
 
 // Validate checks an address to determine if it
 // is valid. To create a valid address, the
@@ -12,6 +22,7 @@ import (
 // in one call.
 func Validate(address Address) error {
 	var result *multierror.Error
+	result.ErrorFormat = ListFormatFunc
 
 	if !generated.hasCountry(address.Country) {
 		result = multierror.Append(result, ErrInvalidCountryCode)
