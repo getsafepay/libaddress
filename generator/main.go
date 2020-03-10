@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ziyadparekh/libaddress/generator/addressor"
+	"github.com/getsafepay/libaddress/generator/addressor"
 	"go/format"
 	"io/ioutil"
 	"log"

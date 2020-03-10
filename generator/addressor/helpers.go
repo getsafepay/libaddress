@@ -2,7 +2,7 @@ package addressor
 
 import (
 	"fmt"
-	"github.com/ziyadparekh/libaddress"
+	"github.com/getsafepay/libaddress"
 	"regexp"
 )
 
